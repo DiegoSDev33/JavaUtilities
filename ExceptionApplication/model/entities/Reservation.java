@@ -43,14 +43,27 @@ public class Reservation {
 		
 	}
 	
-	public void updateDates(Date checkIn, Date checkOut) {
+	public String updateDates(Date checkIn, Date checkOut) {
+		
+		Date now = new Date();
+		
+		if(checkIn.before(now) || checkOut.before(now)) {
+			return "Reversation dates for update must be future";
+		}
+		if (!checkOut.after(checkIn)) { // testando se a data de checkOut nao e antes da Checkin  assim retornado invalido
+			return "Check-out date must be after check-in date";
+		}
+		
+		// PASSANDO PELAS CONDICOES DE ERRO ELE MANDA PARA VALIDAÇÃO
+		
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
+		return null; // return null para dizer que nao houve nenhum erro
 	}
 	
 	@Override
 	public String toString() {
-		return "Room" 
+		return "Room: " 
 			+ roomNumber
 			+ ", checkIn: "
 			+ sdf.format(checkIn)

@@ -23,6 +23,7 @@ public class program {
 		System.out.println("Check-out date (dd/MM/yyyy): ");
 		Date checkOut = sdf.parse(sc.next());
 		
+		
 		if(!checkOut.after(checkIn)) { // testando se a data de checkOut nao e antes da Checkin  assim retornado invalido
 			System.out.println("Error in reservation: CheckOut date must be after check-in date");
 		}
@@ -37,20 +38,17 @@ public class program {
 			System.out.println("Check-out date (dd/MM/yyyy): ");
 			checkOut = sdf.parse(sc.next());
 			
-			Date now = new Date();
-			if(checkIn.before(now) || checkOut.before(now)) {
-				System.out.println("Error in revervation: reversation dates for update must be future");
-			}
-			else if(!checkOut.after(checkIn)) { // testando se a data de checkOut nao e antes da Checkin  assim retornado invalido
-				System.out.println("Error in reservation: CheckOut date must be after check-in date");
-			}
-			else {	
-			reservation.updateDates(checkIn, checkOut);
+			
+		
+			String error = reservation.updateDates(checkIn, checkOut);
+			
+		if(error != null) {
+			System.out.println("Error in reservation: " + error); // error vem de updates que esta na classe reservation
+		}else {
 			System.out.println("Reservation: " + reservation);
-			}
 		}
 		
-		
+		}
 		
 		
 		
