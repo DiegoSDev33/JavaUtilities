@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="ExceptionApplication"/>
 	<classpathentry kind="src" path="StringBuilder"/>
+	<classpathentry kind="src" path="FileRead"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
